@@ -1,0 +1,11 @@
+{
+  "name": "BOLife",
+  "dependencies": {
+    "angular": "1.4.1",
+    "jquery": "1.11.3",
+    "angular-route": "~1.4.6"
+  },
+  "resolutions": {
+    "angular": "1.4.6"
+  }
+}
