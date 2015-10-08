@@ -5,3 +5,4 @@ public/lib/
 public/shared/
 public/views/
 public/*.html
+npm-debug.log
