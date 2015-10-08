@@ -1,0 +1,7 @@
+node_modules
+public/css/
+public/js/
+public/lib/
+public/shared/
+public/views/
+public/*.html
