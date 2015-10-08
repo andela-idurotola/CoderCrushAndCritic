@@ -48,7 +48,7 @@ router.post('/api/v1/todos', function(req, res) { console.log("got to this place
 });
 
 /* READ CODE */
-router.get('/api/v1/todos', function(req, res) { console.log("got here to read code");
+router.get('/api/v1/todos', function(req, res) {
   var results = [];
 
   // Get a Postgress client from the connection pool
