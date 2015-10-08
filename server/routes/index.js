@@ -7,7 +7,7 @@ var connectionString = require(path.join(__dirname, '../', '../', 'config'));
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.sendFile(path.join(__dirname,'../', '../', 'client', 'views', 'index.html'));
+  res.sendFile(path.join(__dirname,'../', '../', 'public', 'views', 'index.html'));
 });
 
 /* CREATE CODE */
