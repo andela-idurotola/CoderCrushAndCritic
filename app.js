@@ -1,3 +1,5 @@
+global._ = require('lodash');
+global.t = require('moment');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
