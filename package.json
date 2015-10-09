@@ -11,6 +11,7 @@
     "debug": "~2.1.1",
     "express": "~4.11.1",
     "gulp": "^3.9.0",
+    "gulp-bower": "0.0.10",
     "gulp-concat": "^2.6.0",
     "gulp-jade": "^1.1.0",
     "gulp-supervisor": "^0.1.2",
