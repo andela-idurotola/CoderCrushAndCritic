@@ -4,7 +4,8 @@ angular.module('nodeTodo.controller', []);
 angular.module('nodeTodo.directive', []);
 
 window.CCAC = angular.module('nodeTodo', [
-  'ngRoute'
+  'ngRoute',
+  'lumx'
 ]);
 
 CCAC.run(function() {

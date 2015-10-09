@@ -9,7 +9,12 @@ var supervisor = require('gulp-supervisor');
 var paths = {
   jade : 'app/**/*jade',
   scripts: 'app/**/*js',
-  public: 'public/**/*.*'
+  public: 'public/**/*.*',
+  styles: [
+    'app/styles/application.less',
+    'app/styles/directives.less',
+    'app/styles/animations.less'
+  ]
 };
 
 // gulp runner for templates
@@ -17,6 +22,22 @@ gulp.task('jade', function() {
   gulp.src(paths.jade)
     .pipe(jade())
     .pipe(gulp.dest('./public/'));
+});
+
+// gulp runner to concat scripts into one file
+gulp.task('scripts', function() {
+  gulp.src(paths.scripts)
+    .pipe(concat('index.js'))
+    .pipe(gulp.dest('./public/js'));
+});
+
+// gulp runner to concat scripts into one file
+gulp.task('less', function () {
+  gulp.src(paths.styles)
+    .pipe(less({
+      paths: [ path.join(__dirname, 'styles') ]
+    }))
+    .pipe(gulp.dest('./public/css'));
 });
 
 // running the server with nodemon
@@ -43,13 +64,6 @@ gulp.task('supervisor', function() {
   });
 });
 
-// gulp runner to concat scripts into one file
-gulp.task('scripts', function() {
-  gulp.src(paths.scripts)
-    .pipe(concat('index.js'))
-    .pipe(gulp.dest('./public/js'));
-});
-
 // gulp runner for the back end tests
 gulp.task('server:test', function() {
   console.log('here to run server test');
@@ -58,7 +72,6 @@ gulp.task('server:test', function() {
 // Rerun the task when a file changes
 gulp.task('watch', function() {
   gulp.watch(paths.appjs,['scripts']);
-  //gulp.watch(paths.js,['scripts']);
   gulp.watch(paths.jade, ['jade']);
   gulp.watch(paths.styles, ['less']);
 
@@ -83,5 +96,5 @@ gulp.task('dev-server', function() {
 });
 
 // default group tasks 
-gulp.task('build', ['bower','scripts','jade', 'watch']);
+gulp.task('build', ['bower','scripts','jade']);
 gulp.task('default', ['build', 'dev-server', 'watch']);

@@ -4,7 +4,8 @@
     "angular": "1.4.1",
     "jquery": "1.11.3",
     "angular-route": "~1.4.6",
-    "angular-ui-router": "~0.2.15"
+    "angular-ui-router": "~0.2.15",
+    "lumx": "~0.3.94"
   },
   "resolutions": {
     "angular": "1.4.6"
