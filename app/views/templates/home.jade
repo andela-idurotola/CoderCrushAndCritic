@@ -1,4 +1,4 @@
-body(ng-controller='mainController')
+.home-page()
   .container
     .header
       h1 Todo App
@@ -11,7 +11,7 @@ body(ng-controller='mainController')
         button.btn.btn-primary.btn-lg.btn-block(type='submit', ng-click='createTodo()') Add Todo
     br
     .todo-list
-      ul(ng-repeat='todo in todoData')
+      ul(ng-repeat='todo in todoData track by $index')
         li
           h3
             input.lead(type='checkbox', ng-click='deleteTodo(todo.id)')

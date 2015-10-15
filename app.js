@@ -38,13 +38,14 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
-       res.redirect('/error_404');
+       // res.redirect('/error_404');
+       // console.log("ERROR : ",req);
     });
 }
 
-app.get('/*', function (req, res) { 
-  res.redirect('/error_404');
-});
+// app.get('/*', function (req, res) { 
+//   res.redirect('/error_404');
+// });
 
 
 module.exports = app;

@@ -3,17 +3,19 @@ var jade = require('gulp-jade');
 var bower = require('gulp-bower');
 var concat = require('gulp-concat');
 var app = require('./app.js');
+var less = require('gulp-less');
+var path = require('path');
 var supervisor = require('gulp-supervisor');
 // var nodemon = require('gulp-nodemon');
 
 var paths = {
   jade : 'app/**/*jade',
-  scripts: 'app/**/*js',
+  scripts: ['app/**/*js','app/js/*js'],
   public: 'public/**/*.*',
   styles: [
     'app/styles/application.less',
-    'app/styles/directives.less',
-    'app/styles/animations.less'
+    // 'app/styles/directives.less',
+    // 'app/styles/animations.less'
   ]
 };
 
@@ -96,5 +98,5 @@ gulp.task('dev-server', function() {
 });
 
 // default group tasks 
-gulp.task('build', ['bower','scripts','jade']);
+gulp.task('build', ['bower','scripts','jade','less']);
 gulp.task('default', ['build', 'dev-server', 'watch']);
