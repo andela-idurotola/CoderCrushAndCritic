@@ -1,10 +1,11 @@
 doctype html
-html(lang="en" ng-app="nodeTodo")
+html(lang="en" ng-app="ccac")
   head
     title Coder Crush And Critics
     include shared/head
   body
+    include templates/top-nav-bar
     .mks-layout(layout="column" layout-fill ui-view)
-    include templates/home
+      //- include templates/home
 
     include shared/footer

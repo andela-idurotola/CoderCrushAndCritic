@@ -6,12 +6,12 @@ var path = require('path');
 var connectionString = require(path.join(__dirname, '../', '../', 'config'));
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res, next) { 
   res.sendFile(path.join(__dirname,'../', '../', 'public', 'views', 'index.html'));
 });
 
 /* CREATE CODE */
-router.post('/api/v1/todos', function(req, res) { console.log("got to this place to post");
+router.post('/api/v1/todos', function(req, res) { 
   var results = [];
 
   // Grab data from http request
@@ -76,7 +76,7 @@ router.get('/api/v1/todos', function(req, res) {
 });
 
 /* UPDATE CODE*/
-router.put('/api/v1/todos/:todo_id', function(req, res) {console.log("got here to update");
+router.put('/api/v1/todos/:todo_id', function(req, res) {
   var results = [];
   // Grab data from the URL parameters
   var id = req.params.todo_id;

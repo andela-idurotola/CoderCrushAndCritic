@@ -11,10 +11,13 @@
     "debug": "~2.1.1",
     "express": "~4.11.1",
     "gulp": "^3.9.0",
+    "gulp-bower": "0.0.10",
     "gulp-concat": "^2.6.0",
     "gulp-jade": "^1.1.0",
     "gulp-supervisor": "^0.1.2",
     "jade": "^1.9.2",
+    "lodash": "^3.10.1",
+    "moment": "^2.10.6",
     "morgan": "~1.5.1",
     "pg": "^4.4.2",
     "serve-favicon": "~2.2.0"
