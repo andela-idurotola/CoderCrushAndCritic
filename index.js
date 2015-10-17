@@ -25,7 +25,6 @@ var app = express();
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(cookieParser());
-
   app.use('/', routes);
   app.use('/users', users);
 
@@ -36,9 +35,6 @@ var app = express();
       next(err);
   });
 
-  console.log('the directory : ',dir);
-
-  // error handlers
   // development error handler
   if (app.get('env') === 'development') {
       app.use(function(err, req, res, next) {
@@ -51,7 +47,7 @@ var app = express();
   var server = app.listen(process.env.PORT || 3000, function() {
     console.log('Listening on port %d', server.address().port);
   });
-  
+
 })(process.cwd());
 
 

@@ -48,7 +48,7 @@ angular.module('ccac.controllers')
     // Get all todos
     $http.get('api/v1/todos').success(function(data) {
       $scope.todoData = data;
-      console.log('todo data is ;',$scope.todoData);
+      console.log('TODO DATA :',$scope.todoData);
     }).error(function(err) {
       console.log('ERROR : ' + err);
     });
