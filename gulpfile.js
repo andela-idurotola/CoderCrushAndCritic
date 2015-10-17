@@ -2,9 +2,10 @@ var gulp = require('gulp');
 var jade = require('gulp-jade');
 var bower = require('gulp-bower');
 var concat = require('gulp-concat');
-var app = require('./app.js');
+// var app = require('./index.js');
 var less = require('gulp-less');
 var path = require('path');
+var nodemon = require('gulp-nodemon');
 var supervisor = require('gulp-supervisor');
 // var nodemon = require('gulp-nodemon');
 
@@ -24,6 +25,14 @@ gulp.task('jade', function() {
   gulp.src(paths.jade)
     .pipe(jade())
     .pipe(gulp.dest('./public/'));
+});
+
+//gulp nodemon to 
+gulp.task('nodemon', function () {
+  nodemon({ script: 'index.js', ext: 'js', ignore: ['public/**','app/**','node_modules/**'] })
+    .on('restart',['jade','less'], function () {
+      console.log('>> node restart');
+    });
 });
 
 // gulp runner to concat scripts into one file
@@ -50,9 +59,9 @@ gulp.task('less', function () {
 
 // gulp supervisor should watch the files and run server when done
 gulp.task('supervisor', function() {
-  supervisor('npm start',{
+  supervisor('index.js',{
     args: [],
-    watch: [ "test" ],
+    watch: [ "public/js/index.js" ],
     ignore: [ "tasks" ],
     pollInterval: 500,
     extensions: [ "js" ],
@@ -66,9 +75,15 @@ gulp.task('supervisor', function() {
   });
 });
 
+
 // gulp runner for the back end tests
 gulp.task('server:test', function() {
   console.log('here to run server test');
+});
+
+// gulp runner for the front end tests
+gulp.task('client:test', function() {
+  console.log('here to run client test');
 });
 
 // Rerun the task when a file changes
@@ -99,4 +114,5 @@ gulp.task('dev-server', function() {
 
 // default group tasks 
 gulp.task('build', ['bower','scripts','jade','less']);
-gulp.task('default', ['build', 'dev-server', 'watch']);
+gulp.task('default', ['build', 'nodemon', 'watch']);
+gulp.task('test', ['server:test', 'client:test']);

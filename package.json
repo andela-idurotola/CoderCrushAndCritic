@@ -1,11 +1,17 @@
 {
   "name": "book-of-life-api",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
+  "main": "index.js",
+  "engines": {
+    "node": "0.10.31",
+    "npm": "1.4.23"
+  },
   "scripts": {
     "prestart": "npm install",
-    "start": "gulp"
-    // "jade": "gulp jade"
+    "start": "node index.js",
+    "jade": "gulp jade",
+    "test": "gulp test"
   },
   "dependencies": {
     "body-parser": "~1.10.2",
