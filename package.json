@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "supervisor ./bin/www"
+    "prestart": "npm install",
+    "start": "gulp"
+    // "jade": "gulp jade"
   },
   "dependencies": {
     "body-parser": "~1.10.2",
