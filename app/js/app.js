@@ -1,18 +1,24 @@
-angular.module('ccac.service', []);
-angular.module('ccac.filter', []);
-angular.module('ccac.controller', []);
-angular.module('ccac.directive', []);
+angular.module('ccac.controllers', []);
+angular.module('ccac.directives', []);
+angular.module('ccac.services', []);
+angular.module('ccac.filters', []);
 
 window.CCAC = angular.module('ccac', [
   'ngRoute',
   'ui.router',
   // 'lumx',
-  'ngMaterial'
+  'ngMaterial',
+  'ccac.controllers',
+  'ccac.directives',
+  'ccac.services',
+  'ccac.filters'
 ]);
 
-CCAC.run(function() {
-
-});
+window.CCAC.run(['$rootScope', function ($rootScope) {
+  // $rootScope._ = window._;
+  // $rootScope.moment = window.moment; 
+  // console.log('rootscope');
+}]);
 
 CCAC.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');

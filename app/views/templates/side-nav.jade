@@ -1,2 +1,46 @@
-.side-nav-veiw(flex='25')
-  
+.side-nav-veiw(flex='25' ng-class="{'acive-sideBar' : sideNavHasFocus}")
+  h3 what do you want to do ?
+  ul
+    li(ng-click="toggleSideNav('nominateForm')" ng-class="{'expanded-action' : display.nominateForm}") Nominate
+    .nominate-awardee(ng-if="display.nominateForm" flex="100" layout-align="center center")
+      .nominate-contact-form(layout="column" flex="75")
+        .form-top(layout="row" flex)
+          .image-holder(flex="33")
+            img(src='./img/default_profile.png')
+          .form-fields(layout="column")
+            select()
+            select()
+            textArea()
+        .form-tools(layout="row")
+          .validation-progress
+            ul(layout="row")
+              li
+                i.mdi.mdi-checkbox-marked-circle 
+              li
+                i.mdi.mdi-checkbox-marked-circle
+              li
+                i.mdi.mdi-checkbox-marked-circle
+          .validation-buttons(layout="row")
+            button() cancel
+            button() save
+
+    li(ng-click="toggleSideNav('createForm')" ng-class="{'expanded-action' : display.createForm}") Create an award
+    .create-award(ng-if="display.createForm")
+      .create-award-form(layout="column")
+        div(layout="row")
+          label hashtag
+          input(placeholder="#myAward")
+        div(layout="row")
+          label Description
+          textArea(placeholder="enter a description")
+      .form-tools(layout="row")
+        .validation-progress
+          ul(layout="row")
+            li
+              i.mdi.mdi-checkbox-marked-circle
+            li
+              i.mdi.mdi-checkbox-marked-circle
+        .validation-buttons(layout="row")
+          button() cancel
+          button() save
+    li(ng-click="toggleSideNav('voteForm')" ng-class="{'expanded-action' : display.voteForm}") Vote for an award

@@ -1,18 +1,24 @@
-angular.module('ccac.service', []);
-angular.module('ccac.filter', []);
-angular.module('ccac.controller', []);
-angular.module('ccac.directive', []);
+angular.module('ccac.controllers', []);
+angular.module('ccac.directives', []);
+angular.module('ccac.services', []);
+angular.module('ccac.filters', []);
 
 window.CCAC = angular.module('ccac', [
   'ngRoute',
   'ui.router',
   // 'lumx',
-  'ngMaterial'
+  'ngMaterial',
+  'ccac.controllers',
+  'ccac.directives',
+  'ccac.services',
+  'ccac.filters'
 ]);
 
-CCAC.run(function() {
-
-});
+window.CCAC.run(['$rootScope', function ($rootScope) {
+  // $rootScope._ = window._;
+  // $rootScope.moment = window.moment; 
+  // console.log('rootscope');
+}]);
 
 CCAC.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
@@ -33,8 +39,8 @@ CCAC.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/error_404.html'
     });    
 });
-angular.module('ccac')
-  .controller('mainController', function($scope, $http) {
+angular.module('ccac.controllers')
+  .controller('mainController',['$scope', '$http', function ($scope, $http) {
     $scope.formData = {};
     $scope.todoData = {};
     console.log('THIS WAS CALLED !');
@@ -67,10 +73,26 @@ angular.module('ccac')
         console.log('Error: ' + data);
       });
     };
-});
+}]);
 
-angular.module('ccac')
-  .controller('playgroundController', function($scope, $http) {
+angular.module('ccac.controllers')
+  .controller('playgroundController', ['$scope', '$http', function ($scope, $http) {
 
-    console.log('THIS IS PLAYGROUND THANKS !');
-});
+    $scope.display = {
+      nominateForm: false,
+      createForm: false,
+      voteForm: false
+    };
+
+    $scope.toggleSideNav = function(option) { 
+      $scope.display[option] = !$scope.display[option];
+      $scope.sideNavHasFocus =  _.contains(_.values($scope.display),true);
+      animateSideNav($scope.sideNavHasFocus);
+    };
+
+    var animateSideNav = function(open) {
+      var sideNav = $(document.getElementsByClassName('side-nav-veiw'));
+      if(open) sideNav.animate({ 'min-width' : 650}, 500);
+      else sideNav.animate({ 'min-width' : 100}, 500);
+    };
+}]);

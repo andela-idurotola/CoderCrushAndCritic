@@ -2,12 +2,12 @@
   md-content(flex="100" layout="row")
     include side-nav
     .playground-view(flex="75" layout="row" layout-wrap)
-      .card(ng-repeat="card in [1,2,3,4,5,6,7,8,9,10]" flex="33" layout)
+      .card(ng-repeat="card in [1,2,3,4,5,6,7,8,9,10]" flex="30" layout)
         .card-container(layout="column")
           .card-details(layout="row" flex="100")
-            .card-image(flex="25")
+            .card-image()
               img(src="./img/demo2.jpg")
-            .card-top(layout="column" flex="75")
+            .card-top(layout="column" flex)
               .tag-headline #dopest
               .tag-reference Jesmine Omonori
           .card-tools(layout="row" layout-align="end")

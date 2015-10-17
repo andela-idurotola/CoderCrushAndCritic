@@ -73,7 +73,7 @@ gulp.task('server:test', function() {
 
 // Rerun the task when a file changes
 gulp.task('watch', function() {
-  gulp.watch(paths.appjs,['scripts']);
+  gulp.watch(paths.scripts,['scripts']);
   gulp.watch(paths.jade, ['jade']);
   gulp.watch(paths.styles, ['less']);
 
