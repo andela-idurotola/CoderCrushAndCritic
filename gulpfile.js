@@ -90,9 +90,9 @@ gulp.task('bower', function() {
 
 // gulp runner for the default launching of the app
 gulp.task('dev-server', function() {
-  var server = app.listen(3000, function () {
-    var host = server.address().address;
+  var server = app.listen(process.env.PORT || 3000, function () {
     var port = server.address().port;
+    var host = server.address().address;
     console.log('Coder Crush And Critics app listening at http://%s:%s', host, port);
   });
 });
