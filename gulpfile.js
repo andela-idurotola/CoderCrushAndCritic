@@ -100,3 +100,4 @@ gulp.task('dev-server', function() {
 // default group tasks 
 gulp.task('build', ['bower','scripts','jade','less']);
 gulp.task('default', ['build', 'dev-server', 'watch']);
+gulp.task('heroku:production', ['build']);
