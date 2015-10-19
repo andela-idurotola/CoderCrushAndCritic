@@ -43,7 +43,6 @@ angular.module('ccac.controllers')
   .controller('mainController',['$scope', '$http', function ($scope, $http) {
     $scope.formData = {};
     $scope.todoData = {};
-    console.log('THIS WAS CALLED !');
 
     // Get all todos
     $http.get('api/v1/todos').success(function(data) {
