@@ -6,7 +6,7 @@ var path = require('path');
 var connectionString = require(path.join(__dirname, '../', '../', 'config'));
 
 /* GET home page. */
-router.get('/', function(req, res, next) { 
+router.get('/', function(req, res, next) { console.log('this is the request : ',req);
   res.sendFile(path.join(__dirname,'../', '../', 'public', 'views', 'index.html'));
 });
 

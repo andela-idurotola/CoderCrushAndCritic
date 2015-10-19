@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var jade = require('gulp-jade');
 var bower = require('gulp-bower');
 var concat = require('gulp-concat');
-// var app = require('./index.js');
+var app = require('./index.js');
 var less = require('gulp-less');
 var path = require('path');
 var nodemon = require('gulp-nodemon');
@@ -14,7 +14,7 @@ var paths = {
   scripts: ['app/**/*js','app/js/*js'],
   public: 'public/**/*.*',
   styles: [
-    'app/styles/application.less',
+    'app/styles/application.less'
     // 'app/styles/directives.less',
     // 'app/styles/animations.less'
   ]
@@ -58,22 +58,22 @@ gulp.task('less', function () {
 // });
 
 // gulp supervisor should watch the files and run server when done
-gulp.task('supervisor', function() {
-  supervisor('index.js',{
-    args: [],
-    watch: [ "public/js/index.js" ],
-    ignore: [ "tasks" ],
-    pollInterval: 500,
-    extensions: [ "js" ],
-    exec: "node",
-    debug: true,
-    debugBrk: false,
-    harmony: true,
-    noRestartOn: false,
-    forceWatch: true,
-    quiet: false
-  });
-});
+// gulp.task('supervisor', function() {
+//   supervisor('index.js',{
+//     args: [],
+//     watch: [ "public/js/index.js" ],
+//     ignore: [ "tasks" ],
+//     pollInterval: 500,
+//     extensions: [ "js" ],
+//     exec: "node",
+//     debug: true,
+//     debugBrk: false,
+//     harmony: true,
+//     noRestartOn: false,
+//     forceWatch: true,
+//     quiet: false
+//   });
+// });
 
 
 // gulp runner for the back end tests
@@ -91,10 +91,6 @@ gulp.task('watch', function() {
   gulp.watch(paths.scripts,['scripts']);
   gulp.watch(paths.jade, ['jade']);
   gulp.watch(paths.styles, ['less']);
-
-  gulp.watch(paths.public).on('change', function(file) {
-    // console.log('FILE PATH: ',file.path);
-  });
 });
 
 // gulp runner for npm install
@@ -114,5 +110,5 @@ gulp.task('dev-server', function() {
 
 // default group tasks 
 gulp.task('build', ['bower','scripts','jade','less']);
-gulp.task('default', ['build', 'nodemon', 'watch']);
+gulp.task('default', ['build', 'dev-server', 'watch']);
 gulp.task('test', ['server:test', 'client:test']);
