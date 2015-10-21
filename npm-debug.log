@@ -1,27 +1,25 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'node', '/usr/local/bin/npm', 'start' ]
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--save',
+1 verbose cli   'sequelize',
+1 verbose cli   'pg' ]
 2 info using npm@1.4.28
 3 info using node@v0.10.33
-4 verbose run-script [ 'prestart', 'start', 'poststart' ]
-5 info prestart book-of-life-api@0.0.0
-6 verbose unsafe-perm in lifecycle true
-7 info start book-of-life-api@0.0.0
-8 verbose unsafe-perm in lifecycle true
-9 info book-of-life-api@0.0.0 Failed to exec start script
-10 error book-of-life-api@0.0.0 start: `./bin/www`
-10 error Exit status 1
-11 error Failed at the book-of-life-api@0.0.0 start script.
-11 error This is most likely a problem with the book-of-life-api package,
-11 error not with npm itself.
-11 error Tell the author that this fails on your system:
-11 error     ./bin/www
-11 error You can get their info via:
-11 error     npm owner ls book-of-life-api
-11 error There is likely additional logging output above.
-12 error System Darwin 14.5.0
-13 error command "node" "/usr/local/bin/npm" "start"
-14 error cwd /Users/kainos/Documents/Source/BOL_API/book-of-life-api
-15 error node -v v0.10.33
-16 error npm -v 1.4.28
-17 error code ELIFECYCLE
-18 verbose exit [ 1, true ]
+4 error Failed to parse json
+4 error Unexpected token /
+5 error File: /Users/kainos/Documents/Source/BOL_API/book-of-life-api/package.json
+6 error Failed to parse package.json data.
+6 error package.json must be actual JSON, not just JavaScript.
+6 error
+6 error This is not a bug in npm.
+6 error Tell the package author to fix their package.json file. JSON.parse
+7 error System Darwin 14.5.0
+8 error command "node" "/usr/local/bin/npm" "install" "--save" "sequelize" "pg"
+9 error cwd /Users/kainos/Documents/Source/BOL_API/book-of-life-api
+10 error node -v v0.10.33
+11 error npm -v 1.4.28
+12 error file /Users/kainos/Documents/Source/BOL_API/book-of-life-api/package.json
+13 error code EJSONPARSE
+14 verbose exit [ 1, true ]

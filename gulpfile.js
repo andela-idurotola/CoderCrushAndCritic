@@ -42,12 +42,6 @@ gulp.task('less', function () {
     .pipe(gulp.dest('./public/css'));
 });
 
-// running the server with nodemon
-// gulp.task('dev-server', function() {
-//   nodemon({script: './bin/www', env: {'NODE_ENV': 'development'}})
-//     .on('restart');
-// });
-
 // gulp supervisor should watch the files and run server when done
 gulp.task('supervisor', function() {
   supervisor('npm start',{
@@ -76,7 +70,6 @@ gulp.task('watch', function() {
   gulp.watch(paths.scripts,['scripts']);
   gulp.watch(paths.jade, ['jade']);
   gulp.watch(paths.styles, ['less']);
-
   gulp.watch(paths.public).on('change', function(file) {
     // console.log('FILE PATH: ',file.path);
   });
