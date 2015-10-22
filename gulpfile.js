@@ -26,6 +26,7 @@ var paths = {
     'public/lib/angular-animate/angular-animate.min.js',
     'public/lib/angular-aria/angular-aria.min.js',
     'public/lib/angular-material/angular-material.min.js',
+    'public/lib/velocity/velocity.js',
     'public/js/index.js',
     'public/views/**/*.html',
     'test/client/*.js'
