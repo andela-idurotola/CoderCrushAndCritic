@@ -3,7 +3,7 @@ angular.module('ccac.directives', []);
 angular.module('ccac.services', []);
 angular.module('ccac.filters', []);
 
-window.CCAC = angular.module('ccac', [
+window.CCAC = angular.module('CCAC', [
   'ngRoute',
   'ui.router',
   // 'lumx',

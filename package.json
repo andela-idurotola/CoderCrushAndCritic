@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "prestart": "npm install",
-    "start": "./bin/www"
+    "start": "./bin/www",
+    "jade" : "gulp jade",
+    "test" : "gulp client:test"
   },
   "dependencies": {
     "body-parser": "~1.10.2",
@@ -15,11 +17,14 @@
     "gulp-bower": "0.0.10",
     "gulp-concat": "^2.6.0",
     "gulp-jade": "^1.1.0",
+    "gulp-karma": "0.0.5",
     "gulp-less": "^3.0.3",
     "gulp-livereload": "^3.8.1",
     "gulp-nodemon": "^2.0.4",
     "gulp-supervisor": "^0.1.2",
     "jade": "^1.9.2",
+    "karma": "^0.12.37",
+    "karma-chrome-launcher": "^0.2.1",
     "lodash": "^3.10.1",
     "moment": "^2.10.6",
     "morgan": "~1.5.1",
@@ -28,5 +33,15 @@
     "sequelize": "^3.12.2",
     "serve-favicon": "~2.2.0",
     "winston": "^1.1.1"
+  },
+  "devDependencies": {
+    "jasmine-core": "^2.3.4",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-jasmine": "^0.3.6",
+    "karma-jshint-preprocessor": "0.0.6",
+    "karma-junit-reporter": "^0.3.8",
+    "karma-ng-html2js-preprocessor": "^0.2.0",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "phantomjs": "^1.9.18"
   }
 }

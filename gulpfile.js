@@ -2,7 +2,8 @@ var gulp = require('gulp');
 var jade = require('gulp-jade');
 var bower = require('gulp-bower');
 var concat = require('gulp-concat');
-var app = require('./app.js');
+var karma = require('gulp-karma');
+// var app = require('./app.js');
 var less = require('gulp-less');
 var path = require('path');
 var supervisor = require('gulp-supervisor');
@@ -12,10 +13,22 @@ var paths = {
   jade : 'app/**/*jade',
   scripts: ['app/**/*js','app/js/*js'],
   public: 'public/**/*.*',
-  styles: [
-    'app/styles/application.less',
-    // 'app/styles/directives.less',
-    // 'app/styles/animations.less'
+  styles: ['app/styles/application.less'],
+  clientTests: [
+    'public/lib/jquery/dist/jquery.min.js',
+    'public/lib/angular/angular.min.js',
+    'public/lib/angular-mocks/angular-mocks.js',
+    'public/lib/jquery-ui/jquery-ui.min.js',
+    'public/lib/lodash/lodash.min.js',
+    'public/lib/angular-route/angular-route.min.js',
+    'public/lib/moment/min/moment-with-locales.min.js',
+    'public/lib/angular-ui-router/release/angular-ui-router.min.js',
+    'public/lib/angular-animate/angular-animate.min.js',
+    'public/lib/angular-aria/angular-aria.min.js',
+    'public/lib/angular-material/angular-material.min.js',
+    'public/js/index.js',
+    'public/views/**/*.html',
+    'test/client/*.js'
   ]
 };
 
@@ -42,14 +55,14 @@ gulp.task('less', function () {
     .pipe(gulp.dest('./public/css'));
 });
 
-// gulp supervisor should watch the files and run server when done
+// should run server and watch the files for changes
 gulp.task('supervisor', function() {
-  supervisor('npm start',{
+  supervisor('./app.js',{
     args: [],
-    watch: [ "test" ],
-    ignore: [ "tasks" ],
+    watch: paths.scripts,
+    ignore: [ "test" ],
     pollInterval: 500,
-    extensions: [ "js" ],
+    extensions: [ "js","jade" ],
     exec: "node",
     debug: true,
     debugBrk: false,
@@ -81,6 +94,15 @@ gulp.task('bower', function() {
     .pipe(gulp.dest('public/lib/'));
 });
 
+// run the client test with karma
+gulp.task('client:test', ['scripts'], function() {
+  return gulp.src(paths.clientTests)
+  .pipe(karma({
+    configFile: 'karma.conf.js',
+    action: 'run'
+  }));
+});
+
 // gulp runner for the default launching of the app
 gulp.task('dev-server', function() {
   var server = app.listen(process.env.PORT || 3000, function () {
@@ -92,5 +114,5 @@ gulp.task('dev-server', function() {
 
 // default group tasks 
 gulp.task('build', ['bower','scripts','jade','less']);
-gulp.task('default', ['build', 'dev-server', 'watch']);
+gulp.task('default', ['build', 'supervisor', 'watch']);
 gulp.task('heroku:production', ['build']);
