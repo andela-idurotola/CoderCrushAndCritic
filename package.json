@@ -6,6 +6,7 @@
     "prestart": "npm install",
     "start": "./bin/www",
     "jade" : "gulp jade",
+    "pretest" : "gulp build",
     "test" : "gulp client:test"
   },
   "dependencies": {
