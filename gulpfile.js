@@ -1,13 +1,11 @@
-var gulp = require('gulp');
-var jade = require('gulp-jade');
-var bower = require('gulp-bower');
-var concat = require('gulp-concat');
-var karma = require('gulp-karma');
-// var app = require('./app.js');
-var less = require('gulp-less');
-var path = require('path');
-var supervisor = require('gulp-supervisor');
-// var nodemon = require('gulp-nodemon');
+var gulp = require('gulp'),
+    path = require('path'),
+    jade = require('gulp-jade'),
+    less = require('gulp-less'),
+    bower = require('gulp-bower'),
+    karma = require('gulp-karma'),
+    concat = require('gulp-concat'),
+    supervisor = require('gulp-supervisor');
 
 var paths = {
   jade : 'app/**/*jade',
@@ -36,24 +34,24 @@ var paths = {
 // gulp runner for templates
 gulp.task('jade', function() {
   gulp.src(paths.jade)
-    .pipe(jade())
-    .pipe(gulp.dest('./public/'));
+  .pipe(jade())
+  .pipe(gulp.dest('./public/'));
 });
 
 // gulp runner to concat scripts into one file
 gulp.task('scripts', function() {
   gulp.src(paths.scripts)
-    .pipe(concat('index.js'))
-    .pipe(gulp.dest('./public/js'));
+  .pipe(concat('index.js'))
+  .pipe(gulp.dest('./public/js'));
 });
 
 // gulp runner to concat scripts into one file
 gulp.task('less', function () {
   gulp.src(paths.styles)
-    .pipe(less({
-      paths: [ path.join(__dirname, 'styles') ]
-    }))
-    .pipe(gulp.dest('./public/css'));
+  .pipe(less({
+    paths: [ path.join(__dirname, 'styles') ]
+  }))
+  .pipe(gulp.dest('./public/css'));
 });
 
 // should run server and watch the files for changes
@@ -84,15 +82,12 @@ gulp.task('watch', function() {
   gulp.watch(paths.scripts,['scripts']);
   gulp.watch(paths.jade, ['jade']);
   gulp.watch(paths.styles, ['less']);
-  gulp.watch(paths.public).on('change', function(file) {
-    // console.log('FILE PATH: ',file.path);
-  });
 });
 
 // gulp runner for npm install
 gulp.task('bower', function() {
   return bower()
-    .pipe(gulp.dest('public/lib/'));
+  .pipe(gulp.dest('public/lib/'));
 });
 
 // run the client test with karma
@@ -102,15 +97,6 @@ gulp.task('client:test', ['scripts'], function() {
     configFile: 'karma.conf.js',
     action: 'run'
   }));
-});
-
-// gulp runner for the default launching of the app
-gulp.task('dev-server', function() {
-  var server = app.listen(process.env.PORT || 3000, function () {
-    var port = server.address().port;
-    var host = server.address().address;
-    console.log('Coder Crush And Critics app listening at http://%s:%s', host, port);
-  });
 });
 
 // default group tasks 
