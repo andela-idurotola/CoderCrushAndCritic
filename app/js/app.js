@@ -3,7 +3,7 @@ angular.module('ccac.directives', []);
 angular.module('ccac.services', []);
 angular.module('ccac.filters', []);
 
-window.CCAC = angular.module('ccac', [
+window.CCAC = angular.module('CCAC', [
   'ngRoute',
   'ui.router',
   // 'lumx',
@@ -14,7 +14,7 @@ window.CCAC = angular.module('ccac', [
   'ccac.filters'
 ]);
 
-window.CCAC.run(['$rootScope', function ($rootScope) {
+CCAC.run(['$rootScope', function ($rootScope) {
   // $rootScope._ = window._;
   // $rootScope.moment = window.moment; 
   // console.log('rootscope');

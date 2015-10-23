@@ -7,3 +7,12 @@ deployment:
 machine:
   node:
     version: 0.10.33
+
+test:
+  pre:
+    - npm start:
+        background: true
+    - bower install
+  override:
+    - npm run jade
+    - npm run test
