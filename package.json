@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "prestart": "npm install",
-    "start": "./bin/www",
+    "start": "gulp",
     "jade" : "gulp jade",
     "pretest" : "gulp build",
     "test" : "gulp client:test"

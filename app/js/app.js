@@ -14,7 +14,7 @@ window.CCAC = angular.module('CCAC', [
   'ccac.filters'
 ]);
 
-window.CCAC.run(['$rootScope', function ($rootScope) {
+CCAC.run(['$rootScope', function ($rootScope) {
   // $rootScope._ = window._;
   // $rootScope.moment = window.moment; 
   // console.log('rootscope');

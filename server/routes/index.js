@@ -1,4 +1,3 @@
-
 var express = require('express');
 var router = express.Router();
 var pg     =  require('pg');
@@ -7,6 +6,7 @@ var connectionString = require(path.join(__dirname, '../', '../', 'config'));
 
 /* GET home page. */
 router.get('/', function(req, res, next) { 
+  console.log('static pages',path.join(__dirname,'../', '../', 'public', 'views', 'index.html'));
   res.sendFile(path.join(__dirname,'../', '../', 'public', 'views', 'index.html'));
 });
 

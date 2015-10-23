@@ -2,7 +2,6 @@ global._    = require('lodash');
 global.t    = require('moment');
 var express = require('express'),
     path    = require('path'),
-    app     = express(),
     favicon = require('serve-favicon'),
     logger  = require('morgan'),
     routes  = require('./server/routes/index'),
@@ -11,6 +10,7 @@ var express = require('express'),
     controllers  = require('./server/controllers'),
     cookieParser = require('cookie-parser'),
     bodyParser   = require('body-parser');
+    app     = express(),
     
 
 // use static page
@@ -26,8 +26,8 @@ app.use(cookieParser());
 
 // use this routes by default 
 app.use('/', routes);
-controllers(app);
 app.use('/users', users);
+controllers(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

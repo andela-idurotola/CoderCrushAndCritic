@@ -38,6 +38,6 @@ module.exports = function(config) {
       'karma-ng-html2js-preprocessor'
     ],
 
-    singleRun: false
+    singleRun: true
   });
 };
