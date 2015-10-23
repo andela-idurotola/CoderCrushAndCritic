@@ -5,8 +5,7 @@ var path   = require('path');
 var connectionString = require(path.join(__dirname, '../', '../', 'config'));
 
 /* GET home page. */
-router.get('/', function(req, res, next) { 
-  console.log('static pages',path.join(__dirname,'../', '../', 'public', 'views', 'index.html'));
+router.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname,'../', '../', 'public', 'views', 'index.html'));
 });
 
