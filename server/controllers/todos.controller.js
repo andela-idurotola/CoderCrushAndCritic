@@ -1,7 +1,9 @@
 'use strict';
 var path   = require('path');
 var pg     =  require('pg');
-var connectionString = require(path.join(__dirname, '../', '../', 'config'));
+var env    = process.env.NODE_ENV || "development";
+var config = require('../config/config')[env];
+var connectionString = config.database.url;
 
 var todos = {
   create: function(req, res) {
