@@ -1,147 +1,33 @@
-var express = require('express');
-var router = express.Router();
-var pg     =  require('pg');
-var path   = require('path');
-var connectionString = require(path.join(__dirname, '../', '../', 'config'));
+'use strict';
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.sendFile(path.join(__dirname,'../', '../', 'public', 'views', 'index.html'));
-});
+var users        = require('../controllers/users.controller'),
+    nominations  = require('../controllers/nominations.controller'),
+    comments     = require('../controllers/comments.controller'),
+    todos        = require('../controllers/todos.controller.js'); 
 
-/* CREATE CODE */
-router.post('/api/v1/todos', function(req, res) { 
-  var results = [];
+module.exports = function (app) {
 
-  // Grab data from http request
-  var data = {
-    text: req.body.text,
-    complete: false
-  };
+  app.get('/api/v1/todos', todos.all);
+  app.post('/api/v1/todos', todos.create);
+  app.put('/api/v1/todos/:todo_id', todos.update);
+  app.delete('/api/v1/todos/:todo_id', todos.delete);
 
-  // Get a postgress client from the connection pool
-  pg.connect(connectionString, function(err, client, done) {
+  app.post('/api/v1/users',  users.new);
+  app.get('/api/v1/users',  users.index);
+  app.get('/api/v1/users/:id',  users.update);
 
-    // SQL Query  > Insert Data
-    client.query("INSERT INTO items(text, complete) values($1,$2)",[data.text, data.complete]);
+  app.post('/api/v1/nominations',  nominations.new);
+  app.get('/api/v1/nominations',  nominations.index);
+  app.get('/api/v1/nominations/:id',  nominations.show);
+  app.put('/api/v1/nominations/:id',  nominations.update);
+  app.delete('/api/v1/nominations/:id',  nominations.delete);
 
-    // SQL Query > Select Data
-    var query  =  client.query("SELECT * FROM items ORDER BY id ASC");
+  app.post('/api/v1/comments',  comments.new);
+  app.get('/api/v1/comments/:id',  comments.index);
+  app.put('/api/v1/comments/:id',  comments.edit);
+  app.delete('/api/v1/comments/:id',  comments.delete);
 
-    // Stream results back one row at a time
-    query.on('row', function(row) {
-      results.push(row);
-    });
-
-    // After all data is returned, close connection and return results
-    query.on('end', function() { 
-      client.end();
-      return res.json(results);
-    });
-
-    // Handle errors
-    if(err) {
-      console.log(err);
-    }
+  app.get('/', function(req, res) {
+    res.sendFile('index.html', {root: './public/views'});
   });
-});
-
-/* READ CODE */
-router.get('/api/v1/todos', function(req, res) {
-  var results = [];
-
-  // Get a Postgress client from the connection pool
-  pg.connect(connectionString, function(err, client, done) {
-    // SQL Query > Select Data
-    var query = client.query("SELECT * FROM items ORDER BY id ASC");
-
-    // Stream results back into one row at a time
-    query.on('row', function(row) {
-      results.push(row);
-    });
-
-    // After all results is returned close connection and return results
-    query.on('end', function() { 
-      client.end();
-      return res.json(results);
-    });
-
-    // Handler Errors
-    if(err) {
-      console.log(err);
-    }
-
-  });
-});
-
-/* UPDATE CODE*/
-router.put('/api/v1/todos/:todo_id', function(req, res) {
-  var results = [];
-  // Grab data from the URL parameters
-  var id = req.params.todo_id;
-  // Grab data from the http request
-  var data = {
-    text: req.body.text,
-    complete: req.body.complete
-  };
-
-  // Get a postgress client from the connection pool
-  pg.connect(connectionString, function(err, client, done) {
-    // SQL Query > Update Data
-    client.query("UPDATE items SET text=($1), complete=($2), WHERE id=($3)", [data.text, data.complete, id]);
-
-    // SQL  Query > Select Data
-    var query = client.query("SELECT * FROM items ORDER BY id ASC");
-
-    // Stream results back one row at a time
-    query.on('row', function(row) {
-      results.push(row);
-    });
-
-    // After all data is returned, close connection and return results
-    query.on('end', function() {
-      client.end();
-      return res.json(results);
-    });
-
-    // Handle errors
-    if(err) {
-      console.log();
-    }
-
-  });
-});
-
-/* DELETE CODE*/
-router.delete('/api/v1/todos/:todo_id', function(req, res) { console.log("this is a delete action");
-  var results = [];
-  // Grab data from the URL parameters
-  var id = req.params.todo_id;
-
-  // Get a postgress client from the connection pool
-  pg.connect(connectionString, function(err, client, done) {
-    // SQL Query > Delete Data
-    client.query("DELETE FROM items WHERE id=($1)",[id]);
-
-    // SQL Query > Select Data
-    var query = client.query("SELECT * FROM items ORDER BY id ASC");
-
-    // Stream all results back one row at a time
-    query.on('row', function(row) {
-      results.push(row);
-    });
-
-    // After all data is returned, close connection and return results
-    query.on('end', function() {
-      client.end();
-      return res.json(results);
-    });
-
-    // Handle Errors
-    if(err) {
-      console.log(err);
-    }
-  });
-});
-
-module.exports = router;
+};

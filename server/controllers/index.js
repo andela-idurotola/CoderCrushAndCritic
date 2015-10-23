@@ -2,9 +2,16 @@
 
 var users        = require('../controllers/users.controller'),
     nominations  = require('../controllers/nominations.controller'),
-    comments     = require('../controllers/comments.controller');
+    comments     = require('../controllers/comments.controller'),
+    todos        = require('../controllers/todos.controller.js'); 
 
 module.exports = function (app) {
+
+  app.get('/api/v1/todos', todos.all);
+  app.post('/api/v1/todos', todos.create);
+  app.put('/api/v1/todos/:todo_id', todos.update);
+  app.delete('/api/v1/todos/:todo_id', todos.delete);
+
   app.post('/api/v1/users',  users.new);
   app.get('/api/v1/users',  users.index);
   app.get('/api/v1/users/:id',  users.update);
