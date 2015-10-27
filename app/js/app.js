@@ -1,14 +1,12 @@
 angular.module('ccac.controllers', []);
 angular.module('ccac.directives', []);
-angular.module('ccac.services', []);
+angular.module('ccac.services', ['firebase','ngCookies']);
 angular.module('ccac.filters', []);
 
 window.CCAC = angular.module('CCAC', [
   'ngRoute',
   'ui.router',
   'ngMaterial',
-  'firebase',
-  'ngCookies',
   'angular-storage',
   'ccac.controllers',
   'ccac.directives',
