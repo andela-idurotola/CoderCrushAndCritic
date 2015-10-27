@@ -5,15 +5,17 @@
   "scripts": {
     "prestart": "npm install",
     "start": "gulp",
-    "jade" : "gulp jade",
-    "pretest" : "gulp build",
-    "test" : "gulp client:test"
+    "jade": "gulp jade",
+    "pretest": "gulp build",
+    "test": "gulp client:test"
   },
   "dependencies": {
     "body-parser": "~1.10.2",
     "cookie-parser": "~1.3.3",
     "debug": "~2.1.1",
     "express": "~4.11.1",
+    "firebase": "latest",
+    "firebase-token-generator": "^2.0.0",
     "gulp": "^3.9.0",
     "gulp-bower": "0.0.10",
     "gulp-concat": "^2.6.0",

@@ -1,6 +1,6 @@
 angular.module('ccac.controllers')
-  .controller('playgroundController', ['$scope', '$http', function ($scope, $http) {
-
+  .controller('PlaygroundCtrl', ['$scope', '$http', function ($scope, $http) {
+  
     $scope.display = {
       nominateForm: false,
       createForm: false,
@@ -18,4 +18,5 @@ angular.module('ccac.controllers')
       if(open) sideNav.animate({ 'min-width' : 650}, 500);
       else sideNav.animate({ 'min-width' : 100}, 500);
     };
-}]);
+  }
+]);
