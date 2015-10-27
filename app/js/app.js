@@ -1,41 +1,59 @@
 angular.module('ccac.controllers', []);
 angular.module('ccac.directives', []);
-angular.module('ccac.services', []);
+angular.module('ccac.services', ['firebase','ngCookies']);
 angular.module('ccac.filters', []);
 
 window.CCAC = angular.module('CCAC', [
   'ngRoute',
   'ui.router',
-  // 'lumx',
   'ngMaterial',
+  'angular-storage',
   'ccac.controllers',
   'ccac.directives',
   'ccac.services',
   'ccac.filters'
 ]);
 
-CCAC.run(['$rootScope', function ($rootScope) {
-  // $rootScope._ = window._;
-  // $rootScope.moment = window.moment; 
-  // console.log('rootscope');
-}]);
+CCAC.run(['$rootScope', '$state', '$http', 'Authentication', '$location', 
+  function($rootScope, $state, $http, Authentication, $location) {
 
-CCAC.config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/');
+    Authentication.isAuthenticated(function(err, user) { 
+      if(err) {
+        event.preventDefault();
+        $location.path('/login');
+      }
+      else {
+        $rootScope.currentUser = user;
+      }                                                                                                                                                                                                     
+    });
+  }
+]);
 
-  $stateProvider
-    .state('home', {
+CCAC.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', 
+  function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+
+    $urlRouterProvider.otherwise('/');
+    $locationProvider.html5Mode(true);
+
+    $stateProvider
+      .state('login', {
+        url: '/login',
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
+      .state('home', {
         url: '/home',
         templateUrl: 'views/templates/home.html',
-        controller: 'mainController'
-    })
-    .state('playground', {
-      url: '/',
-      templateUrl: 'views/templates/playground.html',
-      controller: 'playgroundController'      
-    })
-    .state('error_404', {
-      url: '/error_404',
-      templateUrl: 'views/error_404.html'
-    });    
-});
+        controller: 'mainCtrl'
+      })
+      .state('playground', {
+        url: '/',
+        templateUrl: 'views/templates/playground.html',
+        controller: 'PlaygroundCtrl'      
+      })
+      .state('error_404', {
+        url: '/error_404',
+        templateUrl: 'views/error_404.html'
+      });  
+  }
+]);

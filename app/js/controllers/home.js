@@ -1,5 +1,6 @@
 angular.module('ccac.controllers')
-  .controller('mainController',['$scope', '$http', function ($scope, $http) {
+  .controller('mainCtrl', ['$scope', '$http', function ($scope, $http) {
+
     $scope.formData = {};
     $scope.todoData = {};
 
@@ -31,4 +32,5 @@ angular.module('ccac.controllers')
         console.log('Error: ' + data);
       });
     };
-}]);
+  }
+]);

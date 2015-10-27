@@ -1,16 +1,17 @@
 global._    = require('lodash');
 global.t    = require('moment');
+
 var express = require('express'),
     path    = require('path'),
-    favicon = require('serve-favicon'),
     logger  = require('morgan'),
+    favicon = require('serve-favicon'),
+    models  = require('./server/models/'),
     users   = require('./server/routes/users'),
-    models       = require('./server/models/'),
+    Firebase     = require("firebase"),
+    bodyParser   = require('body-parser'),
     cookieParser = require('cookie-parser'),
     controllers  = require('./server/routes/index'),
-    bodyParser   = require('body-parser');
-    app     = express(),
-    
+    app     = express();
 
 // use static page
 app.use(express.static(path.join(__dirname, './public')));
