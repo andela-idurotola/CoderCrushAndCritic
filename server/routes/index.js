@@ -27,7 +27,7 @@ module.exports = function (app) {
   app.put('/api/v1/comments/:id',  comments.edit);
   app.delete('/api/v1/comments/:id',  comments.delete);
 
-  app.get('/*', function(req, res) { console.log(req);
+  app.get('/*', function(req, res) {
     res.sendFile('index.html', {root: './public/views'});
   });
 };
