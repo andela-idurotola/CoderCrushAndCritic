@@ -4,7 +4,7 @@ describe('playground Controller Tests',function() {
   beforeEach(inject(function ($injector, $controller, $rootScope) {
     scope     = $rootScope.$new();
     rootScope = $rootScope;
-    ctrl      = $controller('playgroundController', {$scope: scope});
+    ctrl      = $controller('PlaygroundCtrl', {$scope: scope});
   }));
 
   it('should test that the playground controller exist', function() {

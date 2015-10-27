@@ -1,12 +1,14 @@
 angular.module('ccac.controllers', []);
 angular.module('ccac.directives', []);
-angular.module('ccac.services', ['firebase','ngCookies']);
+angular.module('ccac.services', []);
 angular.module('ccac.filters', []);
 
 window.CCAC = angular.module('CCAC', [
   'ngRoute',
   'ui.router',
   'ngMaterial',
+  'firebase',
+  'ngCookies',
   'angular-storage',
   'ccac.controllers',
   'ccac.directives',
@@ -19,7 +21,6 @@ CCAC.run(['$rootScope', '$state', '$http', 'Authentication', '$location',
 
     Authentication.isAuthenticated(function(err, user) { 
       if(err) {
-        event.preventDefault();
         $location.path('/login');
       }
       else {

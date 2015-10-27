@@ -25,8 +25,12 @@ var paths = {
     'public/lib/angular-aria/angular-aria.min.js',
     'public/lib/angular-material/angular-material.min.js',
     'public/lib/velocity/velocity.js',
-    'public/js/index.js',
+    'public/lib/angularfire/dist/angularfire.min.js',
+    'public/lib/a0-angular-storage/dist/angular-storage.min.js',
+    'public/lib/firebase/firebase.js',
+    'public/lib/angular-cookies/angular-cookies.min.js',
     'public/views/**/*.html',
+    'public/js/index.js',
     'test/client/*.js'
   ]
 };
