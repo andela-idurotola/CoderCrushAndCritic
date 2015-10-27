@@ -1,15 +1,15 @@
 angular.module('ccac.controllers')
-  .controller('LoginCtrl', ['$scope', '$http', 'Authentication', function ($scope, $http, Authentication) {
+  .controller('LoginCtrl', ['$scope', '$http', 'Authentication', '$state', function ($scope, $http, Authentication, $state) {
 
     $scope.login = function() {
       Authentication.login(function(data) {
-        console.log('came back with the user data from google',data);
+        if(data) $state.go('home');
       });
     };
 
     $scope.googleSignUp = function() {
       Authentication.login(function(data) {
-        console.log('came back with the user data from google',data);
+        if(data) $state.go('playground');
       });
     };
   }
