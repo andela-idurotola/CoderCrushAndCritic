@@ -1,22 +1,37 @@
 angular.module('ccac.controllers')
-  .controller('PlaygroundCtrl', ['$scope', '$http', function ($scope, $http) {
-  
-    $scope.display = {
-      nominateForm: false,
-      createForm: false,
-      voteForm: false
+  .controller('PlaygroundCtrl', ['$scope', '$http','MockData', function ($scope, $http, MockData) {
+
+
+    var options = {
+      align: 'center',
+      autoResize: true,
+      comparator: null,
+      container: $('.playground-view'),
+      direction: 'right',
+      ignoreInactiveItems: true,
+      itemWidth: "25%",
+      fillEmptySpace: true,
+      flexibleWidth: true,
+      offset: 0,
+      onLayoutChanged: undefined,
+      outerOffset: 0,
+      possibleFilters: [],
+      resizeDelay: 50,
+      verticalOffset: 0
     };
 
-    $scope.toggleSideNav = function(option) { 
-      $scope.display[option] = !$scope.display[option];
-      $scope.sideNavHasFocus =  _.contains(_.values($scope.display),true);
-      animateSideNav($scope.sideNavHasFocus);
-    };
+    imagesLoaded('#myElementContainer', function () {
+      var wookmark = new Wookmark('#myElementContainer',options);
+    });
 
-    var animateSideNav = function(open) {
-      var sideNav = $(document.getElementsByClassName('side-nav-veiw'));
-      if(open) sideNav.animate({ 'min-width' : 650}, 500);
-      else sideNav.animate({ 'min-width' : 100}, 500);
-    };
+    
+    $scope.nominations = [];
+    var initalizeNominations = function() {
+      MockData.nominations(function(data) {
+        _.forEach(data, function(nomination) {
+          $scope.nominations.push(nomination);
+        });
+      });
+    }();
   }
 ]);

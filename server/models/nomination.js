@@ -3,9 +3,12 @@
 
 module.exports = function(sequelize, DataTypes) {
   var Nomimation = sequelize.define('Nomimation', {
-    title:       { type: DataTypes.TEXT },
+    title:       { type: DataTypes.TEXT   },
+    image:       { type: DataTypes.STRING },
     hashtag:     { type: DataTypes.STRING },
-    description: { type: DataTypes.STRING }
+    description: { type: DataTypes.STRING },
+    nominee:     { type: DataTypes.STRING },
+    nominator:   { type: DataTypes.STRING }
   }, {
     underscored: true,
     classMethods : {

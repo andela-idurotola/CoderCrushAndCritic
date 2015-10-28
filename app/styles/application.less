@@ -6,116 +6,50 @@ ul {
   margin: 0;
   padding: 0;
 }
-.top-nav-bar {
-  // position: fixed;
+.body-layout {
+
+}
+#myElementContainer {
+    position: relative;
 }
 
-.playground {
-  md-content {
-    overflow: hidden;
-    .side-nav-veiw {
-      min-width: 50px;
-      background-color: #F2F2F2;
-      .nominate-awardee {
-        .nominate-contact-form {
-          border: 1px solid #ccc;
-          .form-top {
-            .image-holder {
-
-            }
-            .form-fields {
-
-            }
-          }
-          .form-tools {
-
-          }
-        }
-      }
-    }
-    .playground-view {
-      overflow-y: scroll;
-      position: relative;
-    }
-  }
-}
-
-
- 
-
-.card {
-  min-width: 320px;
-  padding: 15px;
-  .card-container {
-    width: 100%;
-    // box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.14),
-                // 0 2px 2px 0 rgba(0, 0, 0, 0.098),
-                // 0 1px 5px 0 rgba(0, 0, 0, 0.084);
-    background: #fafafa;
-    // border-radius: 3px;
-    border: 1px solid #ededed;
-    color: #777;
-    .card-tools {
-      border-top: 1px solid #E1E1E1;
-      .tool {
-        padding: 12px 5px;
-        i {
-          font-size: 1.5em;
-          color: #808080;
-        }
-      }
-    }
-    .card-details {
-      .card-top {
-        // height: 110px;
-        .tag-headline {
-          font-size: 1.5em;
-          font-weight: 400;
-          line-height: 32px;
-          color: #202020;
-        }
-        .tag-reference {
-          font-weight: 400;
-          line-height: 24px;
-          color: #757575;
-        }
-      }
-      .card-image {
-        height: 95px;
-        text-align: center;
-        img {
-          height: 100%;
-          width: auto;
-        }
-      }
-    }
-  }
-}
-
-.profile-view {
-  border-left: 1px solid #ccc;
-}
-
-.red-hover-action {
-  &:hover {
-    transition: .3s color;
-    color: #FFDDDD;
-  }
-}
-.playground-view {
-  background-color: #CCCCCC;
-}
-
-.expanded-action {
-  text-align: center;
-  background-color: white;
+.grid-item { 
   padding: 10px;
-  font-size: 1.5em;
 }
-.validation-progress {
+
+.side-nav-veiw {
+  background-color: #0B2736;
+}
+
+.card-container {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.098), 0 1px 5px 0 rgba(0, 0, 0, 0.084);
+  img {
+    width: 100%;
+    height: auto;
+  }
   ul {
+    padding: 0 20px;
+    height: 48px;
+    background-color: #1C1C1C;
+    color: #91949D;
+    transition: color .4s;
     li {
-      
+      list-style: none;
+      min-width: 14px;
+      white-space: nowrap;
+      height: 48px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 48px;
+      font-size: 11px;
+      font-weight: 700;
+      &:hover {
+        transition: color .4s;
+        color: #fff;
+      }
     }
   }
 }
