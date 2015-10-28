@@ -1,25 +1,21 @@
-.playground
+.playground(layout="row"  layout-fill)
   md-content(flex="100" layout="row")
     include side-nav
-    .playground-view(flex="75" layout="row" layout-wrap)
-      .card(ng-repeat="card in [1,2,3,4,5,6,7,8,9,10]" flex="30" layout)
-        .card-container(layout="column")
-          .card-details(layout="row" flex="100")
-            .card-image()
-              img(src="./img/demo2.jpg")
-            .card-top(layout="column" flex)
-              .tag-headline #dopest
-              .tag-reference Jesmine Omonori
-          .card-tools(layout="row" layout-align="end")
-            .tool
-              i.mdi.mdi-minus-circle-outline
-                md-tooltip(md-direction="top") Down Vote
-            .tool
-              i.mdi.mdi-plus-circle-outline
-                md-tooltip(md-direction="top") Up Vote
-            .tool
-              i.mdi.mdi-view-column
-                md-tooltip(md-direction="top") View details
-
-    //- .profile-view(flex="25")
+    .playground-view(flex="80")
+      #myElementContainer.grid(layout="row" flex="100")
+        .grid-item(class="masonryImage" ng-repeat="card in nominations" flex="20")
+          .card-container
+            img(ng-src='{{card.image}}')
+            .details-view
+              .hashtag {{card.hashTag}}
+              .nominee {{card.nominee}}
+              .description {{card.description}}
+              .nominator By {{card.nominator}}
+            ul.nomination-tools(layout="row" layout-align="space-between")
+              li.likes
+                i.mdi.mdi-heart  27 
+              li.comments
+                i.mdi.mdi-comment  14
+              li.view-post 
+                i.mdi.mdi-open-in-new  View
 

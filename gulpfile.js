@@ -11,7 +11,8 @@ var paths = {
   jade : 'app/**/*jade',
   scripts: ['app/**/*js','app/js/*js'],
   public: 'public/**/*.*',
-  styles: ['app/styles/application.less'],
+  styles: ['app/styles/application.less',
+           'app/styles/sidenav.less'],
   clientTests: [
     'public/lib/jquery/dist/jquery.min.js',
     'public/lib/angular/angular.min.js',

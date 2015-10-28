@@ -18,7 +18,7 @@ angular.module('ccac.services')
         },
 
         isAuthenticated: function(cb) {
-          cb({});
+          cb(null, {});
         },
 
         logout: function() {
