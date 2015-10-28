@@ -17,11 +17,12 @@ ul {
   padding: 10px;
 }
 
-.side-nav-veiw {
-  background-color: #0B2736;
+.playground-view {
+  background-color: #F1F1F1;
 }
-
 .card-container {
+  color: #757575;
+  background-color: #fff;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.098), 0 1px 5px 0 rgba(0, 0, 0, 0.084);
@@ -50,6 +51,36 @@ ul {
         transition: color .4s;
         color: #fff;
       }
+    }
+  }
+  .details-view {
+    margin: 10px 16px;
+    .hashtag {
+      box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.098), 0 1px 5px 0 rgba(0, 0, 0, 0.084);
+      display: inline-block;
+      padding: 5px 5px;
+      border-radius: 5px;
+      background-color: #d4d4d4;
+    }
+  }
+}
+
+md-toolbar {
+  &.md-white {
+    background-color: #fff;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    color: #ccc;
+    z-index: 69;
+    min-height: 50px;
+    height: 50px;
+    h2.md-toolbar-tools {
+      min-height: 50px;
+      height: 50px;
+    }
+    h2.md-toolbar-tools.sidenav-title {
+      font-size: 0.85em;
+      color: #999;
+      padding-left: 1.4em;
     }
   }
 }

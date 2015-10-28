@@ -1,23 +1,32 @@
 angular.module('ccac.controllers')
   .controller('PlaygroundCtrl', ['$scope', '$http','MockData', function ($scope, $http, MockData) {
 
+    $scope.display = {
+      vote: false,
+      create: false,
+      nominate: false
+    };
+
+    $scope.openDrawer = function(drawer) {
+      $scope.display[drawer] = !$scope.display[drawer];
+    };
 
     var options = {
-      align: 'center',
+      align:      'center',
+      offset:     0,
+      direction:  'right',
       autoResize: true,
       comparator: null,
-      container: $('.playground-view'),
-      direction: 'right',
-      ignoreInactiveItems: true,
-      itemWidth: "25%",
-      fillEmptySpace: true,
-      flexibleWidth: true,
-      offset: 0,
-      onLayoutChanged: undefined,
+      itemWidth:  "20%",
+      container:  $('.playground-view'),
       outerOffset: 0,
-      possibleFilters: [],
       resizeDelay: 50,
-      verticalOffset: 0
+      fillEmptySpace: true,
+      verticalOffset: 0,
+      flexibleWidth:  true,
+      possibleFilters: [],
+      onLayoutChanged: undefined,
+      ignoreInactiveItems: true
     };
 
     imagesLoaded('#myElementContainer', function () {

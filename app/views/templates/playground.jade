@@ -1,9 +1,9 @@
-.playground(layout="row")
+.playground(layout="row"  layout-fill)
   md-content(flex="100" layout="row")
     include side-nav
-    .playground-view(flex="80" )
+    .playground-view(flex="80")
       #myElementContainer.grid(layout="row" flex="100")
-        .grid-item(class="masonryImage" ng-repeat="card in nominations" flex="25")
+        .grid-item(class="masonryImage" ng-repeat="card in nominations" flex="20")
           .card-container
             img(ng-src='{{card.image}}')
             .details-view
@@ -12,12 +12,10 @@
               .description {{card.description}}
               .nominator By {{card.nominator}}
             ul.nomination-tools(layout="row" layout-align="space-between")
-              //- li.created 
-                i.mdi.mdi-clock 10th OCT 2012
               li.likes
-                i.mdi.mdi-heart  27 likes
+                i.mdi.mdi-heart  27 
               li.comments
-                i.mdi.mdi-comment 14 Comments
+                i.mdi.mdi-comment  14
               li.view-post 
-                i.mdi.mdi-open-in-new View Post
+                i.mdi.mdi-open-in-new  View
 
