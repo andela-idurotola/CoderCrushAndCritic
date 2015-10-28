@@ -29,7 +29,11 @@ var paths = {
     'public/lib/angularfire/dist/angularfire.min.js',
     'public/lib/a0-angular-storage/dist/angular-storage.min.js',
     'public/lib/firebase/firebase.js',
+    'public/lib/eventie/eventie.js',
+    'public/lib/eventEmitter/EventEmitter.js',
+    'public/lib/imagesloaded/imagesloaded.js',
     'public/lib/angular-cookies/angular-cookies.min.js',
+    'public/lib/wookmark-jquery/wookmark.min.js',
     'public/views/**/*.html',
     'public/js/index.js',
     'test/client/*.js'
