@@ -17,7 +17,8 @@
     "angular-animate": "1.4.1",
     "a0-angular-storage": "~0.0.12",
     "imagesloaded": "~3.1.8",
-    "wookmark-jquery": "~2.0.1"
+    "wookmark-jquery": "~2.0.1",
+    "semantic-ui": "~2.1.4"
   },
   "resolutions": {
     "angular": "1.4.1",

@@ -1,7 +1,8 @@
 .playground(layout="row"  layout-fill)
   md-content(flex="100" layout="row")
     include side-nav
-    .playground-view(flex="80")
+    .playground-view(flex="85" layout="column")
+      md-toolbar.md-white()
       #myElementContainer.grid(layout="row" flex="100")
         .grid-item(class="masonryImage" ng-repeat="card in nominations" flex="20")
           .card-container
