@@ -27,7 +27,6 @@
     "gulp-supervisor": "^0.1.2",
     "jade": "^1.9.2",
     "karma": "^0.12.37",
-    "karma-chrome-launcher": "^0.2.1",
     "lodash": "^3.10.1",
     "moment": "^2.10.6",
     "morgan": "~1.5.1",
