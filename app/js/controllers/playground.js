@@ -11,6 +11,10 @@ angular.module('ccac.controllers')
       $scope.display[drawer] = !$scope.display[drawer];
     };
 
+    $scope.isSelected = function(drawer) {
+      return $scope.display[drawer];
+    };
+
     var options = {
       align:      'center',
       offset:     0,
