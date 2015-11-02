@@ -1,8 +1,37 @@
-include shared/head
-section(layout-align="center center")
-  md-button.md-raised.md-warn(ng-click="login()" style="text-transform:none;")
-    span.fa.fa-google-plus
-      |  &nbsp; Login with Google
-  md-button.md-raised.md-primary(ng-click="googleSignUp()" style="text-transform:none;")
-    span.fa.fa-google-plus
-      |  &nbsp; SignUp with Google
+.login-view(flex="100" layout-align="center center" )
+  .signUp-form-container(flex="50")
+    .signUp-semantic(layout-align="center center")
+      .ui.two.column.middle.aligned.very.relaxed.stackable.grid
+        .column
+          .ui.form(form="signInForm")
+            .field
+              label Email
+              .ui.left.icon.input
+                input(name="username" type='text', placeholder='Email' ng-model="credentials.email" required)
+                i.mail.icon
+            .field
+              label Password
+              .ui.left.icon.input
+                input(name="password" type='password' ng-model="credentials.password" required)
+                i.lock.icon
+            .ui.blue.submit.button(ng-click="login()") Login
+        .ui.vertical.divider Or
+        .column
+          .ui.form(form="signUpForm")
+            .field
+              .ui.left.icon.input
+                input(name="name" type='text' placeholder='Name' ng-model="signup.name" required)
+                i.user.icon
+            .field
+              .ui.left.icon.input
+                input(name="Nick Name"   placeholder='handle e.g @nick name' ng-model="signup.known_as" required)
+                i.user.icon
+            .field
+              .ui.left.icon.input
+                input(name="email" placeholder='Email' type="email" ng-model="signup.email" required)
+                i.mail.icon
+            .field
+              .ui.left.icon.input
+                input(name="password"  placeholder='password' type="password" ng-model="signup.password" required)
+                i.lock.icon
+            .ui.blue.submit.button(ng-click="signUp()") SignUp

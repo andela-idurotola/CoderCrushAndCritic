@@ -21,8 +21,8 @@ angular.module('ccac.controllers')
       direction:  'right',
       autoResize: true,
       comparator: null,
-      itemWidth:  "20%",
-      container:  $('.playground-view'),
+      itemWidth:  "19%", // initally i had 20% here and it worked perfectly. check later to see the error that was there
+      container:  $('#myElementContainer'),
       outerOffset: 0,
       resizeDelay: 50,
       fillEmptySpace: true,
@@ -34,7 +34,9 @@ angular.module('ccac.controllers')
     };
 
     imagesLoaded('#myElementContainer', function () {
-      var wookmark = new Wookmark('#myElementContainer',options);
+      setTimeout(function() {
+        var wookmark = new Wookmark('#myElementContainer',options);
+      },500);
     });
 
     
