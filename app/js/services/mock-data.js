@@ -92,6 +92,16 @@ angular.module('ccac.services')
             nominator: 'Grizzly Bear',
             likes: ['user_id_1','user_id_3','user_id_2'],
             comments: []
+          },
+          {
+            id: '6',
+            title:'The Sea Fish',
+            hashTag:'#SeaFish',
+            image:'http://i.imgur.com/bAZWoqx.jpg',
+            description:'Cobby is a Florida-based swimmer. He is also our friend. He takes amazing photographs of swimming people. Most of the time these people are either engaged acting or music making.',
+            nominator: 'Gaskins Cray',
+            likes: ['user_id_1','user_id_3','user_id_2','user_id_5'],
+            comments: []
           }
         ];
 

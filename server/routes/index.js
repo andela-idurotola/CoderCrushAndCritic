@@ -3,18 +3,22 @@
 var users        = require('../controllers/users.controller'),
     nominations  = require('../controllers/nominations.controller'),
     comments     = require('../controllers/comments.controller'),
+    auth         = require('../controllers/auth.controller'),
     todos        = require('../controllers/todos.controller.js'); 
 
-module.exports = function (app) {
+module.exports = function (app, passport) {
+
+  app.post('/api/v1/signup', auth.uniqueUser, users.new);
+  app.post('/api/v1/login', auth.login);
 
   app.get('/api/v1/todos', todos.all);
   app.post('/api/v1/todos', todos.create);
   app.put('/api/v1/todos/:todo_id', todos.update);
   app.delete('/api/v1/todos/:todo_id', todos.delete);
 
-  app.post('/api/v1/users',  users.new);
+  // app.post('/api/v1/users', auth.uniqueUser, users.new);
   app.get('/api/v1/users',  users.index);
-  app.get('/api/v1/users/:id',  users.update);
+  app.put('/api/v1/users/:id',  users.update);
 
   app.post('/api/v1/nominations',  nominations.new);
   app.get('/api/v1/nominations',  nominations.index);
