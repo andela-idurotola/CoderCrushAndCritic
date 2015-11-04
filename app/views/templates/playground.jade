@@ -10,7 +10,7 @@
             .details-view
               .hashtag {{card.hashTag}}
               .nominee {{card.nominee}}
-              .description {{card.description}}
+              .description {{card.description | limitTo : 70}}{{ card.description.length > 70 ? '...': ''}}
               .nominator By {{card.nominator}}
             ul.nomination-tools(layout="row" layout-align="space-between")
               li.likes
